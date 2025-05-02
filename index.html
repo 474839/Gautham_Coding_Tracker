@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gautham's Progressive Coding Plan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gautham's Progressive Coding Plan</h1>
+            <p>🕒 Expect 1–2 weeks per project if you do it steadily.</p>
+        </header>
+
+        <div class="task-input">
+            <input type="text" id="new-task" placeholder="Add a new task...">
+            <button id="add-task-btn">Add Task</button>
+        </div>
+
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">In Progress</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <div class="task-list-container">
+            <h2>Your Coding Journey</h2>
+            <ul id="task-list" class="task-list"></ul>
+        </div>
+
+        <div class="modal" id="task-details-modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modal-title">Task Details</h2>
+                <div id="modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+:root {
+  --primary: #4361ee;
+  --primary-dark: #3a56d4;
+  --secondary: #3f37c9;
+  --success: #4cc9f0;
+  --warning: #ffd166;
+  --danger: #ef476f;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+  --light-gray: #e9ecef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f7fb;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-style: italic;
+}
+
+.task-input {
+  display: flex;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.task-input input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.task-input input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.task-input button, .filter-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+.task-input button:hover, .filter-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  background-color: var(--light-gray);
+  color: var(--dark);
+}
+
+.filter-btn.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.task-list-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.task-list-container h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--secondary);
+}
+
+.task-list {
+  list-style-type: none;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--light-gray);
+  animation: fadeIn 0.3s ease;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-checkbox {
+  margin-right: 1rem;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  appearance: none;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.task-checkbox:checked {
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+.task-checkbox:checked::after {
+  content: "✓";
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.task-text {
+  flex: 1;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  color: var(--gray);
+}
+
+.task-level {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  margin-right: 1rem;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--gray);
+  transition: color 0.3s;
+}
+
+.btn-info:hover {
+  color: var(--primary);
+}
+
+.btn-edit:hover {
+  color: var(--warning);
+}
+
+.btn-delete:hover {
+  color: var(--danger);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 70%;
+  max-width: 700px;
+  animation: slideDown 0.4s ease;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: var(--gray);
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: var(--dark);
+}
+
+#modal-title {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  border-bottom: 2px solid var(--light-gray);
+  padding-bottom: 0.75rem;
+}
+
+#modal-content {
+  line-height: 1.8;
+}
+
+#modal-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary);
+}
+
+#modal-content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-tag {
+  display: inline-block;
+  background-color: var(--light-gray);
+  color: var(--dark);
+  padding: 0.25rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 650px) {
+  .task-input, .task-item {
+      flex-direction: column;
+      align-items: stretch;
+  }
+  
+  .task-input input {
+      margin-bottom: 0.5rem;
+  }
+  
+  .task-actions {
+      margin-top: 0.5rem;
+      justify-content: flex-end;
+  }
+  
+  .modal-content {
+      width: 90%;
+      margin: 15% auto;
+  }
+  
+  .filter-controls {
+      flex-wrap: wrap;
+  }
+}
